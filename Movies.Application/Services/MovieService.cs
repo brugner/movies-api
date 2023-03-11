@@ -51,6 +51,11 @@ public class MovieService : IMovieService
         return _movieRepository.GetBySlugAsync(slug, userId, cancellationToken);
     }
 
+    public Task<int> GetCountAsync(string? title, int? yearOfRelease, CancellationToken cancellationToken = default)
+    {
+        return _movieRepository.GetCountAsync(title, yearOfRelease, cancellationToken);
+    }
+
     public async Task<Movie?> UpdateAsync(Movie movie, Guid? userId = default, CancellationToken cancellationToken = default)
     {
         await _movieValidator.ValidateAndThrowAsync(movie, cancellationToken);
